@@ -37,7 +37,7 @@ class ModuleBlueprint:
 
 
 _BASELINE_COMPATIBILITY: Dict[str, object] = {
-    "python": ">=3.9,<4.0",
+    "python": ">=3.11,<4.0",
     "frameworks": ["fastapi", "nestjs"],
     "os": ["linux", "darwin", "windows"],
 }
@@ -401,7 +401,7 @@ BLUEPRINTS: Dict[str, ModuleBlueprint] = {
             ),
         ),
         compatibility={
-            "python": ">=3.10,<4.0",
+            "python": ">=3.11,<4.0",
             "node": ">=18",
             "frameworks": ["fastapi", "nestjs"],
             "os": ["linux", "darwin", "windows"],
@@ -442,7 +442,7 @@ BLUEPRINTS: Dict[str, ModuleBlueprint] = {
             ),
         ),
         compatibility={
-            "python": ">=3.10,<4.0",
+            "python": ">=3.11,<4.0",
             "node": ">=18",
             "frameworks": ["fastapi", "nestjs"],
             "os": ["linux", "darwin", "windows"],

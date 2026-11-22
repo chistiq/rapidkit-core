@@ -59,7 +59,7 @@ DEFAULT_KIT_ROOT = AUDIT_HISTORY_ROOT / "_kit-runs"
 IN_PROGRESS_MARKER = ".in_progress"
 IN_PROGRESS_STALE_S = 6 * 60 * 60
 KIT_CACHE_SCHEMA_VERSION = 1
-PY310_REQ_PATTERN = re.compile(r"python\s*=\s*['\"](?:\^|>=)?3\.10")
+PY311_REQ_PATTERN = re.compile(r"python\s*=\s*['\"](?:\^|>=)?3\.11")
 DEFAULT_PRODUCT_SCORE_THRESHOLD = 70.0
 DEFAULT_CORE_TEST_TIMEOUT_S = int(os.environ.get("RAPIDKIT_CORE_TEST_TIMEOUT_S", "120"))
 HTTP_SUCCESS_MIN = 200
@@ -86,7 +86,7 @@ PINNED_ESLINT_SECURITY_PLUGIN_VERSION = os.environ.get(
     "RAPIDKIT_PIN_ESLINT_SECURITY_PLUGIN_VERSION", "4.0.1"
 )
 PINNED_SAFE_REGEX_VERSION = os.environ.get("RAPIDKIT_PIN_SAFE_REGEX_VERSION", "2.1.1")
-PINNED_PIP_AUDIT_VERSION = os.environ.get("RAPIDKIT_PIN_PIP_AUDIT_VERSION", "2.10.0")
+PINNED_PIP_AUDIT_VERSION = os.environ.get("RAPIDKIT_PIN_PIP_AUDIT_VERSION", "2.10.1")
 
 # Production-readiness tuning knobs (used by --pro-gates)
 PRO_MAX_HEALTH_LATENCY_MS = float(os.environ.get("RAPIDKIT_PRO_MAX_HEALTH_LATENCY_MS", "2000"))
@@ -213,6 +213,7 @@ class StabilizationRunner:
         trivy_allowlist: Optional[Path] = None,
         stabilization_fingerprint: str = "",
         stabilization_fingerprint_payload: Optional[Path] = None,
+        discard_kit_dependencies: bool = False,
     ) -> None:
         self.original_slug = module_slug
         self.modules_root = MODULES_ROOT.resolve()
@@ -224,6 +225,7 @@ class StabilizationRunner:
         self.kits = list(kits)
         self.dry_run = dry_run
         self.keep_workdirs = keep_workdirs
+        self.discard_kit_dependencies = discard_kit_dependencies
         self.skip_kits = skip_kits
         self.skip_snippet_verification = bool(skip_snippet_verification)
         self.skip_module_tests = bool(skip_module_tests)
@@ -432,6 +434,7 @@ class StabilizationRunner:
 
             summary_path = self._write_summary(parity_payload, product_payload)
             self._log(f"Summary written to {summary_path}")
+            self._prune_kit_dependencies()
             self._prune_audit_history()
             success = True
             return summary_path
@@ -2439,9 +2442,9 @@ class StabilizationRunner:
             content = pyproject.read_text(encoding="utf-8")
         except OSError:
             return ["poetry"]
-        if not PY310_REQ_PATTERN.search(content):
+        if not PY311_REQ_PATTERN.search(content):
             return ["poetry"]
-        python_exe = shutil.which("python3.10")
+        python_exe = shutil.which("python3.11")
         if not python_exe:
             return ["poetry"]
         return [python_exe, "-m", "poetry"]
@@ -3992,6 +3995,26 @@ class StabilizationRunner:
         step.summary = f"{step.summary} ({suffix})" if step.summary else suffix
         return step
 
+    def _prune_kit_dependencies(self) -> None:
+        if not self.discard_kit_dependencies or self.keep_workdirs or self.dry_run:
+            return
+
+        run_root = (self.kit_root / self.safe_slug / self.timestamp).resolve()
+        for run in self.kit_runs:
+            project_dir = (REPO_ROOT / run.project_dir).resolve()
+            if project_dir.parent.parent != run_root:
+                continue
+            for name in (".venv", "node_modules"):
+                path = project_dir / name
+                if path.is_symlink() or not path.is_dir():
+                    continue
+                try:
+                    shutil.rmtree(path)
+                except OSError as exc:
+                    self._log(
+                        f"Could not discard kit dependencies at {self._rel_path(path)}: {exc}"
+                    )
+
     def _prune_audit_history(self) -> None:
         if self.keep_last <= 0:
             return
@@ -4136,6 +4159,11 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     )
     parser.add_argument(
         "--keep-workdirs", action="store_true", help="Skip deleting kit workspaces before running"
+    )
+    parser.add_argument(
+        "--discard-kit-dependencies",
+        action="store_true",
+        help="After writing the report, remove installed dependencies from generated kit projects",
     )
     parser.add_argument(
         "--use-kit-cache",
@@ -4304,6 +4332,7 @@ def main(argv: Sequence[str] | None = None) -> int:
             trivy_allowlist=args.trivy_allowlist,
             stabilization_fingerprint=args.stabilization_fingerprint,
             stabilization_fingerprint_payload=args.stabilization_fingerprint_payload,
+            discard_kit_dependencies=args.discard_kit_dependencies,
         )
     except ValueError as exc:
         print(f"error: {exc}")

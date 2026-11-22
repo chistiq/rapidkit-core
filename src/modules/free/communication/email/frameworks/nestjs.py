@@ -17,7 +17,7 @@ logger = logging.getLogger(__name__)
 
 
 _NPM_DEPENDENCIES: Dict[str, str] = {
-    "nodemailer": "^6.9.0",
+    "nodemailer": "^6.10.1",
 }
 
 _NPM_DEV_DEPENDENCIES: Dict[str, str] = {

@@ -122,20 +122,20 @@ depends_on:
     - name: fastapi
       source: external
       tool: pip
-      version: ">=0.139.0,<1.0.0"
+      version: ">=0.165.0,<1.0.0"
     - name: httpx
       source: external
       tool: pip
-      version: ">=0.27.0"
+      version: ">=0.28.1"
   fastapi/ddd:
     - name: fastapi
       source: external
       tool: pip
-      version: ">=0.139.0,<1.0.0"
+      version: ">=0.165.0,<1.0.0"
     - name: httpx
       source: external
       tool: pip
-      version: ">=0.27.0"
+      version: ">=0.28.1"
   nestjs/standard:
     - name: "@nestjs/common"
       source: npm
@@ -157,18 +157,18 @@ depends_on:
     - name: redis
       source: external
       tool: pip
-      version: ">=5.0.0,<6.0"
+      version: ">=5.3.1,<6.0"
 
 dev_dependencies:
   - name: pytest
     source: external
     tool: pip
-    version: ">=9.0.3,<10.0"
+    version: ">=9.2.0,<10.0.0"
   - name: pytest-asyncio
     source: external
     tool: pip
-    version: ">=1.3.0,<2.0"
+    version: ">=1.5.0,<2.0.0"
   - name: httpx
     source: external
     tool: pip
-    version: ">=0.27.0,<0.29.0"
+    version: ">=0.28.1,<0.29.0"

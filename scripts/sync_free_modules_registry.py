@@ -235,7 +235,7 @@ def build_registry() -> dict[str, Any]:
             "documentation": "https://getrapidkit.com",
             "source_of_truth": "src/modules/free/**/module.yaml",
             "compatibility": {
-                "python_versions": ["3.9", "3.10", "3.11", "3.12"],
+                "python_versions": ["3.11", "3.12"],
                 "node_versions": [">=22"],
                 "frameworks": ["fastapi", "nestjs"],
                 "operating_systems": ["linux", "darwin", "windows"],

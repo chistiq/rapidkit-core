@@ -41,7 +41,7 @@ build_plan, describe_plan = _load_plan()
 
 DEFAULT_HEALTH_PREFIX = "/api/health/module/deployment"
 DEFAULT_RUNTIME = "{{ runtime | default('python') }}"
-DEFAULT_RUNTIME_VERSION = "{{ python_version | default('3.10') }}"
+DEFAULT_RUNTIME_VERSION = "{{ python_version | default('3.11') }}"
 DEFAULT_INCLUDE_CI = {{ include_ci | default(true) }}
 DEFAULT_INCLUDE_POSTGRES = {{ include_postgres | default(true) }}
 

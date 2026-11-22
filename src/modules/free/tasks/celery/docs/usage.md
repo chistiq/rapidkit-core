@@ -5,7 +5,7 @@ NestJS applications.
 
 ## Prerequisites
 
-- Python `>=3.10`
+- Python `>=3.11`
 - Node.js `>=18`
 - Redis or other Celery-compatible broker/result backend
 - Required packages:

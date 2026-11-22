@@ -5,7 +5,7 @@
     "tier": "standard",
     "version": "0.1.0",
     "path": "src/kits/fastapi/ddd",
-    "hash": "846033384ed8116a617ea9b99bce1b9778aa8ea727539e92b6fd14ce54b55390"
+    "hash": "1ad3b300cf9ebaf63696e3bdeab0b6841de7d1f60e62d65f6ccf29d0ccea97ce"
   },
   {
     "name": "standard",
@@ -13,7 +13,7 @@
     "tier": "standard",
     "version": "0.1.0",
     "path": "src/kits/fastapi/standard",
-    "hash": "e00ce4980b148224ce183a529ba6fbc2178186b9ae9e6892a1b0dbcf34a79059"
+    "hash": "6b2c81cf6aed065919f58ea98d83a6e008b7478b78e24b1ccabbe9b577295bba"
   },
   {
     "name": "standard",
@@ -21,6 +21,6 @@
     "tier": "standard",
     "version": "0.1.0",
     "path": "src/kits/nestjs/standard",
-    "hash": "12555d8b48c1f072cf1ff358445ecaa85075a3b43810e0782799949dbfe6b3f4"
+    "hash": "29e5bfa43f87f95a904a49b7d14f6c0804eeb636ac3b0e21cba4eb1b9975b7fc"
   }
 ]

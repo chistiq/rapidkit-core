@@ -92,7 +92,7 @@ def test_nestjs_package_json_updates_dependencies(tmp_path: Path) -> None:
     plugin = NestJSPlugin()
     plugin._ensure_package_dependencies(package_json)
     data = json.loads(package_json.read_text())
-    assert data["dependencies"]["better-sqlite3"] == "^12.5.0"
+    assert data["dependencies"]["better-sqlite3"] == "^12.11.1"
     assert data["devDependencies"]["@types/better-sqlite3"] == "^7.6.13"
 
 

@@ -1,5 +1,9 @@
 # Changelog — free/database/db_mongo
 
+## 0.1.14 — Automated patch release triggered by content hash change (2026-11-07)
+
+- chore: Automated patch release triggered by content hash change
+
 ## 0.1.13 — Automated patch release triggered by content hash change (2026-09-02)
 
 - chore: Automated patch release triggered by content hash change

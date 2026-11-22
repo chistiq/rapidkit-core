@@ -6,7 +6,7 @@ This guide helps teams upgrade from legacy logging scaffolds to the unified Rapi
 
 1. Remove bespoke logging utilities and retain only the configuration entry points that integrate
    with application code.
-1. Ensure the project is on Python 3.10+ (FastAPI) or Node 16+ (NestJS) and is using the unified
+1. Ensure the project is on Python 3.11+ (FastAPI) or Node 16+ (NestJS) and is using the unified
    settings module if request context propagation is required.
 
 ## 2. Generate the New Artefacts

@@ -1,7 +1,7 @@
 name: celery
 display_name: Celery
 description: Production-ready Celery task orchestration for asynchronous workloads
-version: 0.1.15
+version: 0.1.16
 tier: free
 access: free
 status: stable
@@ -100,7 +100,7 @@ generation:
         default:
             - celery_env
 compatibility:
-    python: ">=3.10"
+    python: ">=3.11"
     node: ">=18"
     frameworks:
         - fastapi
@@ -132,8 +132,8 @@ support:
     discussions: https://github.com/chistiq/rapidkit-core/discussions
     documentation: https://getrapidkit.com/modules/celery
 changelog:
-  - version: "0.1.15"
-    date: "2026-07-27"
+  - version: "0.1.16"
+    date: "2026-11-21"
     notes: "See docs/changelog.md"
 validation:
     pre_install:

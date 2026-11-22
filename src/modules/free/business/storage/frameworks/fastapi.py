@@ -6,13 +6,16 @@ from __future__ import annotations
 import importlib
 from typing import Any, Dict, Mapping
 
+from packaging.specifiers import SpecifierSet
+from packaging.version import InvalidVersion, Version
+
 from modules.shared.frameworks import FrameworkPlugin
 
 
 class FastAPIPlugin(FrameworkPlugin):
     """Generate FastAPI bindings for the storage runtime."""
 
-    MIN_FASTAPI_VERSION = (0, 139)
+    FASTAPI_VERSIONS = SpecifierSet(">=0.165.0,<1.0.0")
 
     @property
     def name(self) -> str:  # noqa: D401 - short alias
@@ -60,7 +63,7 @@ class FastAPIPlugin(FrameworkPlugin):
         try:
             fastapi_module = importlib.import_module("fastapi")
         except ImportError:
-            issues.append("fastapi>=0.139.0,<1.0.0 is required for the storage module")
+            issues.append(f"fastapi{self.FASTAPI_VERSIONS} is required for the storage module")
             return issues
 
         version_raw = getattr(fastapi_module, "__version__", None)
@@ -68,31 +71,29 @@ class FastAPIPlugin(FrameworkPlugin):
             issues.append("Unable to detect FastAPI version")
             return issues
 
-        version_bits = version_raw.split(".")
         try:
-            major = int(version_bits[0]) if version_bits else 0
-            minor = int(version_bits[1]) if len(version_bits) > 1 else 0
-        except ValueError:
+            supported = self.FASTAPI_VERSIONS.contains(Version(version_raw))
+        except InvalidVersion:
             issues.append("Unable to parse FastAPI version")
             return issues
 
-        if (major, minor) < self.MIN_FASTAPI_VERSION:
-            issues.append("FastAPI 0.139.0 or newer is required")
+        if not supported:
+            issues.append(f"fastapi{self.FASTAPI_VERSIONS} is required for the storage module")
 
         return issues
 
     def get_dependencies(self) -> list[str]:
         return [
-            "fastapi>=0.139.0,<1.0.0",
-            "python-multipart>=0.0.5",
+            "fastapi>=0.165.0,<1.0.0",
+            "python-multipart>=0.0.32",
             "aiofiles>=22.1.0",
             "pillow>=9.0.0",
         ]
 
     def get_dev_dependencies(self) -> list[str]:
         return [
-            "pytest>=9.0.3,<10.0",
-            "pytest-asyncio>=1.3.0,<2.0",
-            "httpx>=0.23.0",
+            "pytest>=9.2.0,<10.0",
+            "pytest-asyncio>=1.5.0,<2.0",
+            "httpx>=0.28.1",
             "faker>=15.0.0",
         ]

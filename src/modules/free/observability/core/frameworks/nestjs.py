@@ -77,9 +77,9 @@ class NestJSPlugin(FrameworkPlugin):
 
     def get_dependencies(self) -> List[str]:
         return [
-            "@nestjs/common@^10.0.0",
-            "@nestjs/core@^10.0.0",
-            "rxjs@^7.8.0",
+            "@nestjs/common@^10.4.22",
+            "@nestjs/core@^10.4.22",
+            "rxjs@^7.8.2",
         ]
 
     def get_dev_dependencies(self) -> List[str]:

@@ -6,7 +6,7 @@ exposed by the module.
 
 ## Prerequisites
 
-- Python 3.10+
+- Python 3.11+
 - RapidKit Core CLI (`rapidkit`) or access to the repository checkout
 - Virtual environment with project dependencies installed (`poetry install` or `poetry install`)
 - Optional: Node.js toolchain if you plan to generate the NestJS framework

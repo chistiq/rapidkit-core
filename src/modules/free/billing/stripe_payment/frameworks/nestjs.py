@@ -87,19 +87,19 @@ class NestJSPlugin(FrameworkPlugin):
 
     def get_dependencies(self) -> List[str]:
         return [
-            "@nestjs/common@^10.0.0",
-            "@nestjs/core@^10.0.0",
-            "@nestjs/config@^3.0.0",
+            "@nestjs/common@^10.4.22",
+            "@nestjs/core@^10.4.22",
+            "@nestjs/config@^3.3.0",
         ]
 
     def get_dev_dependencies(self) -> List[str]:
         return [
-            "@nestjs/testing@^10.0.0",
-            "@types/jest@^29.0.0",
-            "@types/node@^20.0.0",
-            "jest@^29.0.0",
-            "ts-jest@^29.0.0",
-            "typescript@^5.0.0",
+            "@nestjs/testing@^10.4.22",
+            "@types/jest@^29.5.14",
+            "@types/node@^20.19.43",
+            "jest@^29.7.0",
+            "ts-jest@^29.4.15",
+            "typescript@^5.9.3",
         ]
 
 

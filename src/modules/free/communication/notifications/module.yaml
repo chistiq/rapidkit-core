@@ -1,5 +1,5 @@
 name: notifications
-version: 0.1.33
+version: 0.1.34
 tier: free
 access: free
 status: stable
@@ -111,7 +111,7 @@ compatibility:
     breaking: 1.0.0
     deprecated: null
     migration_guide: https://getrapidkit.com/modules/notifications/migration
-    python: ">=3.10"
+    python: ">=3.11"
     frameworks:
         - fastapi
         - nestjs
@@ -144,8 +144,8 @@ support:
     discussions: https://github.com/chistiq/rapidkit-core/discussions
     documentation: https://getrapidkit.com/modules/notifications
 changelog:
-  - version: "0.1.33"
-    date: "2026-07-27"
+  - version: "0.1.34"
+    date: "2026-11-07"
     notes: "See docs/changelog.md"
 validation:
     pre_install:

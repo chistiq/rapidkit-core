@@ -153,23 +153,23 @@ class TestPluginSystem:
         assert fastapi_context["framework"] == "fastapi"
         assert nestjs_context["framework"] == "nestjs"
 
-    @patch("sys.version_info", (3, 10, 0))
+    @patch("sys.version_info", (3, 11, 0))
     def test_fastapi_validate_requirements_success(self) -> None:
         """Test FastAPI plugin validation when requirements are met."""
-        with patch.dict("sys.modules", {"fastapi": Mock(__version__="1.0.0")}):
+        with patch.dict("sys.modules", {"fastapi": Mock(__version__="0.165.0")}):
             plugin = get_plugin("fastapi")
             errors = plugin.validate_requirements()
 
             assert errors == []
 
-    @patch("sys.version_info", (3, 6, 0))
+    @patch("sys.version_info", (3, 10, 21))
     def test_fastapi_validate_requirements_old_python(self) -> None:
         """Test FastAPI plugin validation when Python version is too old."""
         plugin = get_plugin("fastapi")
         errors = plugin.validate_requirements()
 
         assert len(errors) > 0
-        assert "Python 3.10+" in " ".join(errors)
+        assert "Python 3.11+" in " ".join(errors)
 
     @patch("shutil.which")
     @patch("subprocess.run")

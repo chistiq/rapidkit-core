@@ -18,7 +18,7 @@ This module generates a complete PostgreSQL integration layer that includes:
 ## Prerequisites
 
 - PostgreSQL 12.0+
-- Python 3.10+
+- Python 3.11+
 - SQLAlchemy 2.0+
 - asyncpg (for async operations)
 - psycopg (for sync operations)

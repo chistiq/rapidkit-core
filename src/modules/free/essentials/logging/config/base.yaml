@@ -103,7 +103,7 @@ depends_on:
     - name: python-json-logger
       source: external
       tool: pip
-      version: ">=2.0.0,<3.0"
+      version: ">=2.0.7,<3.0"
   nestjs/standard:
     - name: '@nestjs/config'
       source: npm
@@ -118,16 +118,16 @@ dev_dependencies:
   - name: pytest
     source: external
     tool: pip
-    version: ">=9.0.3,<10.0"
+    version: ">=9.2.0,<10.0.0"
   - name: pytest-asyncio
     source: external
     tool: pip
-    version: ">=1.3.0,<2.0.0"
+    version: ">=1.5.0,<2.0.0.0"
   - name: httpx
     source: external
     tool: pip
-    version: ">=0.28.0,<1.0"
+    version: ">=0.28.1,<1.0"
   - name: black
     source: external
     tool: pip
-    version: ">=26.3.1,<27.0"
+    version: ">=26.10.1,<27.0.0"

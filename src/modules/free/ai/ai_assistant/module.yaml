@@ -1,7 +1,7 @@
 name: ai_assistant
 display_name: Ai Assistant
 description: Provider-agnostic...
-version: 0.1.23
+version: 0.1.24
 access: free
 status: stable
 category: ai
@@ -85,7 +85,7 @@ generation:
     config: config/snippets.yaml
     default: []
 compatibility:
-  python: '>=3.9,<4.0'
+  python: '>=3.11,<4.0'
   frameworks:
   - fastapi
   - nestjs
@@ -128,8 +128,8 @@ support:
   discussions: https://github.com/chistiq/rapidkit-core/discussions
   documentation: https://getrapidkit.com/modules/ai_assistant
 changelog:
-  - version: "0.1.23"
-    date: "2026-09-02"
+  - version: "0.1.24"
+    date: "2026-11-07"
     notes: "See docs/changelog.md"
 validation:
   pre_install:

@@ -110,10 +110,10 @@ class FastAPIPlugin(FrameworkPlugin):
 
     def get_dependencies(self) -> List[str]:
         return [
-            "pydantic>=2.12.2,<3.0",  # aligns with RapidKit baseline
+            "pydantic>=2.14.4,<3.0",  # aligns with RapidKit baseline
         ]
 
     def get_dev_dependencies(self) -> List[str]:
         return [
-            "pytest>=9.0.3,<10.0",  # consistent with core test tooling
+            "pytest>=9.2.0,<10.0",  # consistent with core test tooling
         ]

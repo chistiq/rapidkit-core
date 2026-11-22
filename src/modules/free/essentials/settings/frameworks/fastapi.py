@@ -104,12 +104,12 @@ class FastAPIPlugin(FrameworkPlugin):
         """Validate FastAPI-specific requirements."""
 
         errors: List[str] = []
-        min_python = (3, 10)
-        min_fastapi_version = (0, 139, 0)
+        min_python = (3, 11)
+        min_fastapi_version = (0, 165, 0)
 
         if sys.version_info < min_python:
             errors.append(
-                "FastAPI requires Python 3.10+; upgrade your runtime before generating code"
+                "FastAPI requires Python 3.11+; upgrade your runtime before generating code"
             )
 
         fastapi_available = False
@@ -135,7 +135,7 @@ class FastAPIPlugin(FrameworkPlugin):
 
         if not fastapi_available:
             errors.append(
-                "FastAPI is not installed. Install it with: pip install 'fastapi>=0.139.0,<1.0.0'"
+                "FastAPI is not installed. Install it with: pip install 'fastapi>=0.165.0,<1.0.0'"
             )
             return errors
 
@@ -143,7 +143,7 @@ class FastAPIPlugin(FrameworkPlugin):
             version_tuple = self._normalise_version(version_str)
             if version_tuple < min_fastapi_version:
                 errors.append(
-                    "FastAPI version {found} is too old. Upgrade with: pip install 'fastapi>=0.139.0,<1.0.0'".format(
+                    "FastAPI version {found} is too old. Upgrade with: pip install 'fastapi>=0.165.0,<1.0.0'".format(
                         found=version_str
                     )
                 )
@@ -167,18 +167,18 @@ class FastAPIPlugin(FrameworkPlugin):
     def get_dependencies(self) -> List[str]:
         """Get FastAPI-specific dependencies."""
         return [
-            "fastapi>=0.139.0,<1.0.0",
-            "uvicorn[standard]>=0.50.2,<1.0.0",  # For running FastAPI apps
-            "pydantic-settings>=2.14.2,<3.0",
+            "fastapi>=0.165.0,<1.0.0",
+            "uvicorn[standard]>=0.54.0,<1.0.0",  # For running FastAPI apps
+            "pydantic-settings>=2.16.3,<3.0",
         ]
 
     def get_dev_dependencies(self) -> List[str]:
         """Get development dependencies for FastAPI."""
         return [
-            "pytest-asyncio>=1.3.0,<2.0",
-            "httpx>=0.28.0",  # For testing FastAPI apps
-            "fastapi[all]>=0.139.0,<1.0.0",  # Includes all optional dependencies
-            "pydantic-settings>=2.14.2,<3.0",
+            "pytest-asyncio>=1.5.0,<2.0",
+            "httpx>=0.28.1",  # For testing FastAPI apps
+            "fastapi[all]>=0.165.0,<1.0.0",  # Includes all optional dependencies
+            "pydantic-settings>=2.16.3,<3.0",
         ]
 
     def pre_generation_hook(self, output_dir: Path) -> None:

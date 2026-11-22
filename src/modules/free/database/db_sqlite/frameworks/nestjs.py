@@ -12,7 +12,7 @@ from modules.shared.frameworks import FrameworkPlugin
 logger = logging.getLogger(__name__)
 
 _NPM_DEPENDENCIES: Dict[str, str] = {
-    "better-sqlite3": "^12.5.0",
+    "better-sqlite3": "^12.11.1",
 }
 
 _NPM_DEV_DEPENDENCIES: Dict[str, str] = {

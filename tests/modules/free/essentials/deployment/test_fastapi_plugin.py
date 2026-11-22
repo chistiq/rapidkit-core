@@ -25,16 +25,16 @@ def test_fastapi_context_enrichments_include_defaults() -> None:
     assert context["runtime"] == "python"
     assert context["include_ci"] is True
     assert context["include_postgres"] is True
-    assert context["python_version"] == "3.10"
+    assert context["python_version"] == "3.11"
 
 
 def test_fastapi_dependencies_lists_expected_packages() -> None:
     plugin = FastAPIPlugin()
 
-    assert "fastapi>=0.139.0,<1.0.0" in plugin.get_dependencies()
+    assert "fastapi>=0.165.0,<1.0.0" in plugin.get_dependencies()
     dev_deps = plugin.get_dev_dependencies()
-    assert "pytest-asyncio>=1.3.0,<2.0" in dev_deps
-    assert "httpx>=0.28.0" in dev_deps
+    assert "pytest-asyncio>=1.5.0,<2.0" in dev_deps
+    assert "httpx>=0.28.1" in dev_deps
 
 
 def test_fastapi_pre_generation_creates_required_directories(tmp_path: Path) -> None:

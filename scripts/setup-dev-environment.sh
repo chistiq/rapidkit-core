@@ -178,6 +178,22 @@ setup_pre_commit() {
     print_success "Pre-commit hooks installed"
 }
 
+# Verify a Python CLI tool by running it, preferring a working executable and
+# falling back to the project's Poetry environment when a PATH entry is stale.
+verify_python_cli_tool() {
+    local tool="$1"
+    local version
+
+    if command_exists "$tool" && version=$("$tool" --version 2>/dev/null); then
+        print_success "$tool: $version"
+    elif poetry_tool_available "$tool" && version=$(poetry run "$tool" --version 2>/dev/null); then
+        print_success "$tool (poetry): $version"
+    else
+        print_error "$tool not found or not executable"
+        return 1
+    fi
+}
+
 # Verify installation
 verify_installation() {
     print_status "Verifying installation..."
@@ -198,48 +214,23 @@ verify_installation() {
         print_success "shellcheck: $(shellcheck --version)"
     fi
 
-    if command_exists pre-commit; then
-        print_success "pre-commit: $(pre-commit --version)"
-    elif poetry_tool_available pre-commit; then
-        print_success "pre-commit (poetry): $(poetry run pre-commit --version)"
-    else
-        print_error "pre-commit not found"
+    if ! verify_python_cli_tool pre-commit; then
         failed=1
     fi
 
-    if command_exists black; then
-        print_success "black: $(black --version)"
-    elif poetry_tool_available black; then
-        print_success "black (poetry): $(poetry run black --version)"
-    else
-        print_error "black not found"
+    if ! verify_python_cli_tool black; then
         failed=1
     fi
 
-    if command_exists ruff; then
-        print_success "ruff: $(ruff --version)"
-    elif poetry_tool_available ruff; then
-        print_success "ruff (poetry): $(poetry run ruff --version)"
-    else
-        print_error "ruff not found"
+    if ! verify_python_cli_tool ruff; then
         failed=1
     fi
 
-    if command_exists mypy; then
-        print_success "mypy: $(mypy --version)"
-    elif poetry_tool_available mypy; then
-        print_success "mypy (poetry): $(poetry run mypy --version)"
-    else
-        print_error "mypy not found"
+    if ! verify_python_cli_tool mypy; then
         failed=1
     fi
 
-    if command_exists bandit; then
-        print_success "bandit: $(bandit --version)"
-    elif poetry_tool_available bandit; then
-        print_success "bandit (poetry): $(poetry run bandit --version)"
-    else
-        print_error "bandit not found"
+    if ! verify_python_cli_tool bandit; then
         failed=1
     fi
 

@@ -5,7 +5,7 @@ templated messages from Python, FastAPI, and NestJS projects.
 
 ## Prerequisites
 
-- Python `>=3.10` for the vendor runtime and FastAPI variant.
+- Python `>=3.11` for the vendor runtime and FastAPI variant.
 - Node.js `>=18` for the NestJS variant.
 - Optional dependencies:
   - `pip install aiosmtplib` for SMTP delivery.

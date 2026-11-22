@@ -5,7 +5,7 @@ module ecosystem. Workspace-level workflows are handled by Workspai.
 
 ## 📋 Requirements
 
-- Python 3.10+
+- Python 3.11+
 - Git (for cloning repositories or managing generated projects)
 
 ## Install the CLI

@@ -3564,16 +3564,16 @@
   "excluded_commits": [],
   "included_commits": [
     {
-      "sha": "c1ef60e1b863547ab9633b5e57170f015195a984",
-      "subject": "release(core): prepare v0.6.1 security maintenance"
+      "sha": "b5acdbe0dbbdb437a7b0ed7979e085060fdcbd07",
+      "subject": "feat(core): require Python 3.11 and refresh dependencies"
     }
   ],
-  "promote_branch": "promote/v0.6.1",
-  "promoted_at": "2026-09-06T09:54:13.340720Z",
+  "promote_branch": "promote/v0.6.2",
+  "promoted_at": "2026-11-22T20:50:21.740498Z",
   "schema_version": 1,
-  "source_base_sha": "5f5abe3f0f9d99a3f6acc183fee477ea52c81a99",
-  "source_head_sha": "c1ef60e1b863547ab9633b5e57170f015195a984",
+  "source_base_sha": "c1ef60e1b863547ab9633b5e57170f015195a984",
+  "source_head_sha": "b5acdbe0dbbdb437a7b0ed7979e085060fdcbd07",
   "target_branch": "main",
   "target_repo": "https://github.com/chistiq/rapidkit-core.git",
-  "version": "0.6.1"
+  "version": "0.6.2"
 }

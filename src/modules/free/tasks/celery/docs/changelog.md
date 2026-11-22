@@ -1,5 +1,9 @@
 # Changelog — free/tasks/celery
 
+## 0.1.16 — Automated patch release triggered by content hash change (2026-11-21)
+
+- chore: Automated patch release triggered by content hash change
+
 ## 0.1.15 — Automated patch release triggered by content hash change (2026-07-27)
 
 - chore: Automated patch release triggered by content hash change
