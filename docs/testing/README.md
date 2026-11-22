@@ -103,12 +103,12 @@ To mirror the GitHub Actions matrix without burning CI minutes, use the bundled 
 python -m pip install --upgrade "tox>=4.10"
 
 # Run the CI-equivalent unit tests
-tox -e unit-ubuntu310
-tox -e unit-windows310
-tox -e unit-macos310
+tox -e unit-ubuntu311
+tox -e unit-windows311
+tox -e unit-macos311
 
 # Optional legacy Windows cp1252 smoke
-tox -e legacy-windows310
+tox -e legacy-windows311
 
 # Run linters / formatters and type-checking with one command
 tox -e lint,typecheck
@@ -119,16 +119,16 @@ tox
 
 ### What each environment covers
 
-- **`unit-ubuntu310`** – ubuntu-latest job w/ Python 3.10 + coverage gates.
-- **`unit-windows310`** – mirrors the GitHub Actions Windows job (UTF-8 console).
-- **`unit-macos310`** – macOS 13/14 equivalent smoke run.
-- **`legacy-windows310`** – cp1252 console simulation targeting the generators/docs suite.
+- **`unit-ubuntu311`** – ubuntu-latest job w/ Python 3.11 + coverage gates.
+- **`unit-windows311`** – mirrors the GitHub Actions Windows job (UTF-8 console).
+- **`unit-macos311`** – macOS 13/14 equivalent smoke run.
+- **`legacy-windows311`** – cp1252 console simulation targeting the generators/docs suite.
 - **`lint` / `typecheck`** – wraps `ruff`, `black --check`, and `mypy` with the same arguments as
   CI.
 
-> 💡 Tip: need to force a specific interpreter path? export `TOX_PY310=/abs/path/to/python3.10`
+> 💡 Tip: need to force a specific interpreter path? export `TOX_PY311=/abs/path/to/python3.11`
 > before running tox. The pre-push hook will automatically run the entire matrix via
-> `poetry run tox -e unit-ubuntu310,...` so you learn about cross-platform failures before GitHub
+> `poetry run tox -e unit-ubuntu311,...` so you learn about cross-platform failures before GitHub
 > Actions does.
 
 ## 📊 Coverage Gates

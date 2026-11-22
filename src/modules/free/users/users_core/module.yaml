@@ -1,7 +1,7 @@
 name: users_core
 display_name: Users Core
 description: Opinionated domain services and HTTP adapters for managing RapidKit users
-version: 0.1.15
+version: 0.1.16
 access: free
 status: stable
 category: users
@@ -138,7 +138,7 @@ generation:
     config: config/snippets.yaml
     default: []
 compatibility:
-  python: '>=3.10,<4.0'
+  python: '>=3.11,<4.0'
   node: '>=18'
   frameworks:
   - fastapi
@@ -173,8 +173,8 @@ support:
   discussions: https://github.com/chistiq/rapidkit-core/discussions
   documentation: https://getrapidkit.com/modules/users-core
 changelog:
-  - version: "0.1.15"
-    date: "2026-07-27"
+  - version: "0.1.16"
+    date: "2026-11-07"
     notes: "See docs/changelog.md"
 validation:
   pre_install:

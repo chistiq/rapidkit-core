@@ -1,7 +1,7 @@
 name: db_sqlite
 display_name: Db Sqlite
 description: SQLite database integration for development
-version: 0.1.15
+version: 0.1.16
 access: free
 status: stable
 tier: free
@@ -84,7 +84,7 @@ generation:
         config: config/snippets.yaml
         default: []
 compatibility:
-    python: ">=3.10,<4.0"
+    python: ">=3.11,<4.0"
     node: ">=18,<21"
     frameworks:
         - fastapi
@@ -128,8 +128,8 @@ support:
     discussions: https://github.com/chistiq/rapidkit-core/discussions
     documentation: https://getrapidkit.com/modules/database/db_sqlite
 changelog:
-  - version: "0.1.15"
-    date: "2026-09-02"
+  - version: "0.1.16"
+    date: "2026-11-07"
     notes: "See docs/changelog.md"
 validation:
     pre_install:

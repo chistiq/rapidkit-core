@@ -1,7 +1,7 @@
 name: document_pipeline
 display_name: "Document Pipeline"
 description: "Document ingestion, extraction, chunking, classification, and audit-safe processing pipeline for AI/workflow products"
-version: 0.1.11
+version: 0.1.12
 access: free
 status: stable
 tier: free
@@ -90,7 +90,7 @@ generation:
     config: config/snippets.yaml
     default: []
 compatibility:
-  python: ">=3.9,<4.0"
+  python: ">=3.11,<4.0"
   frameworks:
     - fastapi
     - nestjs
@@ -133,8 +133,8 @@ support:
   discussions: https://github.com/chistiq/rapidkit-core/discussions
   documentation: https://getrapidkit.com/modules/document_pipeline
 changelog:
-  - version: "0.1.11"
-    date: "2026-09-02"
+  - version: "0.1.12"
+    date: "2026-11-07"
     notes: "See docs/changelog.md"
 validation:
   pre_install:

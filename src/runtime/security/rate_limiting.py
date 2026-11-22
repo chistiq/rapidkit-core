@@ -106,7 +106,7 @@ def _coerce_scope(value: Any, default: RateLimitScope = "identity") -> RateLimit
     cleaned = _as_str(value, default) or default
     allowed: tuple[RateLimitScope, ...] = ("global", "identity", "route", "route-identity")
     if cleaned in allowed:
-        return cast(RateLimitScope, cleaned)
+        return cleaned
     return default
 
 

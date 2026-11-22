@@ -113,14 +113,14 @@ class FastAPIPlugin(FrameworkPlugin):
 
     def get_dependencies(self) -> List[str]:
         return [
-            "redis>=5.0.0,<6.0",
+            "redis>=5.3.1,<6.0",
         ]
 
     def get_dev_dependencies(self) -> List[str]:
         return [
-            "pytest>=9.0.3,<10.0",
-            "pytest-asyncio>=1.3.0,<2.0",
-            "httpx>=0.27.0",
+            "pytest>=9.2.0,<10.0",
+            "pytest-asyncio>=1.5.0,<2.0",
+            "httpx>=0.28.1",
         ]
 
 

@@ -144,7 +144,7 @@ def test_fastapi_plugin_hooks(tmp_path: Path) -> None:
     config = plugin.get_example_configurations()["auth_core"]
     assert config["iterations"] == EXPECTED_FASTAPI_ITERATIONS
     assert "pydantic" in plugin.get_dependencies()[0]
-    assert plugin.get_dev_dependencies() == ["pytest>=9.0.3,<10.0"]
+    assert plugin.get_dev_dependencies() == ["pytest>=9.2.0,<10.0"]
 
 
 def test_nestjs_plugin_creates_defaults(tmp_path: Path) -> None:
@@ -183,7 +183,7 @@ def test_nestjs_plugin_updates_existing_files(tmp_path: Path) -> None:
     updated_package = json.loads(package_json.read_text())
     assert updated_package["scripts"]["build"] == "nest build"
     assert updated_package["dependencies"]["joi"] == "^17"
-    assert updated_package["dependencies"]["@nestjs/core"] == "^11.1.6"
+    assert updated_package["dependencies"]["@nestjs/core"] == "^11.2.11"
 
 
 def test_nestjs_plugin_ignores_invalid_files(

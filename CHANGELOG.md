@@ -1,11 +1,13 @@
 # Changelog
 
-## [Snapshot 0.6.1](https://github.com/chistiq/rapidkit-core/compare/v0.3.1...HEAD)
+## [Snapshot 0.6.2](https://github.com/chistiq/rapidkit-core/compare/v0.3.1...HEAD)
 
-> This distribution is built from commit `c1ef60e1` and is not a tagged release.
+> This distribution is built from commit `b5acdbe0` and is not a tagged release.
 
 ### Features
 
+- **core:** require Python 3.11 and refresh dependencies
+  ([b5acdbe0](https://github.com/chistiq/rapidkit-core/commit/b5acdbe0dbbdb437a7b0ed7979e085060fdcbd07))
 - add deterministic module restore for clean clones
   ([e5eafe24](https://github.com/chistiq/rapidkit-core/commit/e5eafe241c385966ceda93e9cc4e0aa46e362503))
 - **cli:** add module identity util and harden module lifecycle commands

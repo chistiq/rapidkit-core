@@ -5,6 +5,8 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Any, Dict, List
 
+from packaging.version import InvalidVersion, Version
+
 from core.engine.generator import BaseKitGenerator
 
 
@@ -48,6 +50,12 @@ class FastAPIStandardGenerator(BaseKitGenerator):
             raise ValueError(
                 "Project name should start with a letter and contain only alphanumeric characters or underscores"
             )
+        try:
+            python_version = Version(str(variables.get("python_version", "3.11")))
+        except InvalidVersion as error:
+            raise ValueError("Provide a valid target Python version, such as 3.11.") from error
+        if not Version("3.11") <= python_version < Version("4.0") or python_version.is_prerelease:
+            raise ValueError("FastAPI kits require a stable Python version from 3.11 through 3.x.")
 
     def _resolve_modules(self, variables: Dict[str, Any]) -> List[Dict[str, Any]]:
         """Determine which modules should be installed for the kit."""
@@ -124,7 +132,7 @@ class FastAPIStandardGenerator(BaseKitGenerator):
             "auth_oauth2": auth_strategy == "oauth2",
             "auth_basic": auth_strategy == "basic",
             "selected_modules": self.selected_modules,
-            "python_version": str(self._context_variables.get("python_version", "3.10")),
+            "python_version": str(self._context_variables.get("python_version", "3.11")),
             "runtime": "python",
         }
 

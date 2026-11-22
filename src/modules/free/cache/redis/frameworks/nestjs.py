@@ -45,15 +45,15 @@ _DEFAULT_PACKAGE_JSON: Dict[str, Any] = {
         "test": "jest",
     },
     "dependencies": {
-        "@nestjs/common": "^11.1.6",
-        "@nestjs/core": "^11.1.6",
-        "@nestjs/config": "^4.0.2",
-        "joi": "^17.12.0",
+        "@nestjs/common": "^11.2.11",
+        "@nestjs/core": "^11.2.11",
+        "@nestjs/config": "^4.0.4",
+        "joi": "^17.13.9",
     },
     "devDependencies": {
-        "typescript": "^5.1.3",
-        "ts-node": "^10.9.1",
-        "@nestjs/cli": "^11.0.14",
+        "typescript": "^5.9.3",
+        "ts-node": "^10.9.2",
+        "@nestjs/cli": "^11.0.24",
     },
 }
 

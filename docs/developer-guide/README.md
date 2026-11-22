@@ -9,7 +9,7 @@ kits, and distribution automation.
 
 | Tool    | Recommended                           |
 | ------- | ------------------------------------- |
-| Python  | 3.10.21 for release and stabilization |
+| Python  | 3.11.18 for release and stabilization |
 | Poetry  | Latest stable                         |
 | Node.js | 20.x for NestJS gates                 |
 | npm     | Latest stable compatible with Node 20 |

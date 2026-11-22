@@ -82,7 +82,7 @@ class FastAPIPlugin(FrameworkPlugin):
         )
         context.setdefault("include_ci", True)
         context.setdefault("include_postgres", True)
-        context.setdefault("python_version", "3.10")
+        context.setdefault("python_version", "3.11")
         slug_value = str(context.get("module_slug") or context.get("module_name") or "deployment")
         module_segment = slug_value.split("/")[-1]
         context.setdefault("module_kebab", module_segment.replace("_", "-"))
@@ -91,11 +91,11 @@ class FastAPIPlugin(FrameworkPlugin):
 
     def validate_requirements(self) -> List[str]:
         errors: List[str] = []
-        min_python = (3, 10)
+        min_python = (3, 11)
         min_fastapi_version = (0, 139, 0)
 
         if sys.version_info < min_python:
-            errors.append("FastAPI plugins require Python 3.10 or newer.")
+            errors.append("FastAPI plugins require Python 3.11 or newer.")
 
         version_str: str | None = None
         fastapi_available = False
@@ -124,7 +124,7 @@ class FastAPIPlugin(FrameworkPlugin):
             version_tuple = self._normalise_version(version_str)
             if version_tuple < min_fastapi_version:
                 errors.append(
-                    "FastAPI version {found} is too old. Upgrade with: pip install 'fastapi>=0.139.0,<1.0.0'".format(
+                    "FastAPI version {found} is too old. Upgrade with: pip install 'fastapi>=0.165.0,<1.0.0'".format(
                         found=version_str
                     )
                 )
@@ -147,15 +147,15 @@ class FastAPIPlugin(FrameworkPlugin):
 
     def get_dependencies(self) -> List[str]:
         return [
-            "fastapi>=0.139.0,<1.0.0",
-            "uvicorn[standard]>=0.50.2,<1.0.0",
+            "fastapi>=0.165.0,<1.0.0",
+            "uvicorn[standard]>=0.54.0,<1.0.0",
         ]
 
     def get_dev_dependencies(self) -> List[str]:
         return [
-            "pytest-asyncio>=1.3.0,<2.0",
-            "httpx>=0.28.0",
-            "fastapi[all]>=0.139.0,<1.0.0",
+            "pytest-asyncio>=1.5.0,<2.0",
+            "httpx>=0.28.1",
+            "fastapi[all]>=0.165.0,<1.0.0",
         ]
 
     def pre_generation_hook(self, output_dir: Path) -> None:

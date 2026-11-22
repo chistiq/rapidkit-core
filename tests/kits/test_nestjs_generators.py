@@ -69,13 +69,17 @@ def minimal_kit_dir(tmp_path: Path) -> Path:
 
 
 class TestNestJSStandardGenerator:
-    def test_package_template_pins_safe_yaml_for_supported_package_managers(self) -> None:
+    def test_package_template_scopes_security_overrides(self) -> None:
         template = NESTJS_PACKAGE_TEMPLATE.read_text(encoding="utf-8")
 
+        assert '"multer": "2.5.0"' in template
         assert '"overrides"' in template
         assert '"resolutions"' in template
         assert '"pnpm"' in template
-        assert template.count('"js-yaml": "5.2.2"') == 3
+        assert template.count('"js-yaml": "5.5.0"') == 3
+        assert '"typeorm": { "glob": "14.0.6" }' in template
+        assert '"typeorm/glob": "14.0.6"' in template
+        assert '"typeorm>glob": "14.0.6"' in template
 
     def test_validate_variables_success(
         self, minimal_kit_dir: Path, minimal_nestjs_config: KitConfig

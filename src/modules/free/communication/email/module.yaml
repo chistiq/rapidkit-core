@@ -1,5 +1,5 @@
 name: email
-version: 0.1.26
+version: 0.1.27
 tier: free
 access: free
 status: stable
@@ -95,17 +95,17 @@ dev_dependencies:
     - name: pytest
       source: external
       tool: pip
-      version: ">=9.0.3,<10.0"
+      version: ">=9.2.0,<10.0.0"
     - name: pytest-asyncio
       source: external
       tool: pip
-      version: ">=1.3.0,<2.0"
+      version: ">=1.4.1.post1,<2.0.0"
     - name: httpx
       source: external
       tool: pip
       version: ">=0.27.2,<0.29"
 compatibility:
-    python: ">=3.10"
+    python: ">=3.11"
     node: ">=18"
     frameworks:
         - fastapi
@@ -140,8 +140,8 @@ support:
     discussions: https://github.com/chistiq/rapidkit-core/discussions
     documentation: https://getrapidkit.com/modules/email
 changelog:
-  - version: "0.1.26"
-    date: "2026-07-27"
+  - version: "0.1.27"
+    date: "2026-11-07"
     notes: "See docs/changelog.md"
 validation:
     pre_install:

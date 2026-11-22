@@ -22,10 +22,10 @@ resolve_test_python() {
     return 0
   fi
 
-  # Prefer pinned interpreter when available, but gracefully fall back on
-  # platforms where python3.10 isn't packaged (e.g., Debian 13).
-  for candidate in python3.10 python3 python; do
-    if command -v "$candidate" >/dev/null 2>&1; then
+  # Preserve an existing supported environment before looking for system Python.
+  for candidate in "$PROJECT_ROOT/.venv/bin/python" "$PROJECT_ROOT/.venv/Scripts/python.exe" python3.11 python3 python; do
+    if command -v "$candidate" >/dev/null 2>&1 &&
+      "$candidate" -c 'import sys; raise SystemExit(0 if sys.version_info >= (3, 11) else 1)' >/dev/null 2>&1; then
       echo "$candidate"
       return 0
     fi
@@ -41,7 +41,7 @@ fi
 
 TEST_PYTHON="$(resolve_test_python || true)"
 if [ -z "$TEST_PYTHON" ]; then
-  echo "No suitable Python interpreter found in PATH (tried: python3.10, python3, python)." >&2
+  echo "No suitable Python interpreter found in PATH (tried: python3.11, python3, python)." >&2
   exit 127
 fi
 
@@ -50,8 +50,8 @@ if ! command -v "$TEST_PYTHON" >/dev/null 2>&1; then
   exit 127
 fi
 
-if ! "$TEST_PYTHON" -c 'import sys; raise SystemExit(0 if sys.version_info >= (3, 10) else 1)' >/dev/null 2>&1; then
-  echo "Interpreter '$TEST_PYTHON' is too old. Need Python >= 3.10." >&2
+if ! "$TEST_PYTHON" -c 'import sys; raise SystemExit(0 if sys.version_info >= (3, 11) else 1)' >/dev/null 2>&1; then
+  echo "Interpreter '$TEST_PYTHON' is too old. Need Python >= 3.11." >&2
   "$TEST_PYTHON" -V >&2 || true
   exit 127
 fi

@@ -112,14 +112,14 @@ class FastAPIPlugin(FrameworkPlugin):
 
     def get_dependencies(self) -> List[str]:
         return [
-            "fastapi>=0.139.0,<1.0.0",
-            "sqlalchemy>=2.0.0",
-            "asyncpg>=0.29.0",
-            "psycopg[binary]>=3.1.0",
+            "fastapi>=0.165.0,<1.0.0",
+            "sqlalchemy[asyncio]>=2.0.58,<3.0",
+            "asyncpg>=0.32.0",
+            "psycopg[binary]>=3.3.9",
         ]
 
     def get_dev_dependencies(self) -> List[str]:
         return [
-            "pytest>=9.0.3,<10.0",
-            "pytest-asyncio>=1.3.0,<2.0",
+            "pytest>=9.2.0,<10.0",
+            "pytest-asyncio>=1.5.0,<2.0",
         ]

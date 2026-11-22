@@ -33,7 +33,7 @@ depends_on:
         - name: better-sqlite3
           source: npm
           tool: npm
-          version: "^12.5.0"
+          version: "^12.11.1"
 
 dev_dependencies:
     - name: "@types/better-sqlite3"

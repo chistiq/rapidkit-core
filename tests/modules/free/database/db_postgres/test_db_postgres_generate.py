@@ -4,15 +4,46 @@ from __future__ import annotations
 
 import os
 import tempfile
+import tomllib
 from importlib import import_module
 from pathlib import Path
 from typing import cast
+
+import pytest
+
+from core.engine import dependency_installer
+from core.services.config_loader import load_module_config
 
 
 def _read_text(path: Path) -> str:
     """Read file contents with UTF-8 encoding across platforms."""
 
     return path.read_text(encoding="utf-8").strip()
+
+
+@pytest.mark.parametrize(
+    "profile", ["fastapi.standard", "fastapi.ddd", "fastapi.pro", "fastapi.ai"]
+)
+def test_install_declares_sqlalchemy_asyncio_extra(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, profile: str
+) -> None:
+    config = load_module_config("free/database/db_postgres", profile)
+    pyproject = tmp_path / "pyproject.toml"
+    pyproject.write_text(
+        '[tool.poetry.dependencies]\npython = ">=3.11"\n'
+        '# <<<inject:module-dependencies>>>\nsqlalchemy = ">=2.0.58,<3.0"\n',
+        encoding="utf-8",
+    )
+    (tmp_path / ".rapidkit").mkdir()
+    monkeypatch.chdir(tmp_path)
+    monkeypatch.setattr(dependency_installer, "_sync_poetry_lockfile", lambda _: None)
+
+    dependency_installer.install_module_dependencies(config, profile, "", final=True)
+
+    dependencies = tomllib.loads(pyproject.read_text(encoding="utf-8"))["tool"]["poetry"][
+        "dependencies"
+    ]
+    assert dependencies["sqlalchemy"] == {"version": ">=2.0.58,<3.0", "extras": ["asyncio"]}
 
 
 def test_generate_vendor_and_variant_outputs(

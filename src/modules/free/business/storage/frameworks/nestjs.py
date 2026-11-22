@@ -69,26 +69,26 @@ class NestJSPlugin(FrameworkPlugin):
 
     def get_dependencies(self) -> list[str]:
         return [
-            "@nestjs/common@^10.0.0",
-            "@nestjs/core@^10.0.0",
-            "@nestjs/config@^3.0.0",
-            "@nestjs/platform-express@^10.0.0",
-            "reflect-metadata@^0.1.13",
-            "rxjs@^7.5.0",
-            "sharp@^0.32.0",
+            "@nestjs/common@^10.4.22",
+            "@nestjs/core@^10.4.22",
+            "@nestjs/config@^3.3.0",
+            "@nestjs/platform-express@^10.4.22",
+            "reflect-metadata@^0.1.14",
+            "rxjs@^7.8.2",
+            "sharp@^0.32.6",
             "aws-sdk@^2.1000.0",
-            "@google-cloud/storage@^6.0.0",
+            "@google-cloud/storage@^6.12.0",
         ]
 
     def get_dev_dependencies(self) -> list[str]:
         return [
-            "@nestjs/testing@^10.0.0",
-            "@types/jest@^29.0.0",
-            "@types/supertest@^2.0.0",
-            "jest@^29.0.0",
+            "@nestjs/testing@^10.4.22",
+            "@types/jest@^29.5.14",
+            "@types/supertest@^2.0.16",
+            "jest@^29.7.0",
             "supertest@^6.3.0",
-            "ts-jest@^29.0.0",
-            "@faker-js/faker@^8.0.0",
+            "ts-jest@^29.4.15",
+            "@faker-js/faker@^8.4.1",
         ]
 
     def pre_generation_hook(self, output_dir: Path) -> None:

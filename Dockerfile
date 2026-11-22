@@ -1,5 +1,5 @@
 # Use the repository's release-grade Python patch as the base.
-FROM python:3.10.21-slim
+FROM python:3.11.18-slim
 
 # Set environment variables
 ENV PYTHONUNBUFFERED=1 \

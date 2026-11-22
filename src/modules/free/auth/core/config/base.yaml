@@ -95,7 +95,7 @@ depends_on:
     - name: pydantic
       source: external
       tool: pip
-      version: ">=2.12.2,<3.0"
+      version: ">=2.14.4,<3.0"
   nestjs/standard:
     - name: "@nestjs/common"
       source: npm
@@ -118,8 +118,8 @@ dev_dependencies:
   - name: pytest
     source: external
     tool: pip
-    version: ">=9.0.3,<10.0"
+    version: ">=9.2.0,<10.0.0"
   - name: ruff
     source: external
     tool: pip
-    version: ">=0.14.0,<1.0"
+    version: ">=0.14.14,<0.15.0"

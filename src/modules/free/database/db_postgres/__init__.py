@@ -44,7 +44,7 @@ def get_module_info() -> Dict[str, Any]:
             "dependency_injection",
         ],
         "frameworks": ["fastapi", "nestjs"],
-        "python_version": ">=3.10,<4.0",
+        "python_version": ">=3.11,<4.0",
         "postgresql_version": ">=12.0",
     }
 
