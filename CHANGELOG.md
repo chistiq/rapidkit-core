@@ -1,8 +1,8 @@
 # Changelog
 
-## [Snapshot 0.6.2](https://github.com/chistiq/rapidkit-core/compare/v0.3.1...HEAD)
+## [Snapshot 0.6.3](https://github.com/chistiq/rapidkit-core/compare/v0.3.1...HEAD)
 
-> This distribution is built from commit `b5acdbe0` and is not a tagged release.
+> This distribution is built from commit `887b4de6` and is not a tagged release.
 
 ### Features
 
@@ -798,6 +798,8 @@
 
 ### Chores
 
+- **release:** bump RapidKit Core to 0.6.3
+  ([887b4de6](https://github.com/chistiq/rapidkit-core/commit/887b4de6cca4a24ad35fd6381e6116ca81ccb33d))
 - **release:** prepare RapidKit Core 0.6.0
   ([6cc34767](https://github.com/chistiq/rapidkit-core/commit/6cc347671340ba64f298746264091a132bd7de6a))
 - **release:** prepare RapidKit Core 0.6.0
